@@ -2,6 +2,8 @@
   <div class="flex flex-col h-full overflow-hidden">
     <div class="flex-1 overflow-y-auto scroll-smooth px-4 pt-5 pb-6 flex flex-col gap-10">
 
+      <h1 class="text-4xl font-bold text-center tracking-tight">30. Juli 2025</h1>
+
       <template v-for="(item, i) in images" :key="i">
         <!-- Image + caption group -->
         <div class="chat-group">
@@ -46,7 +48,7 @@ const emit = defineEmits(['answer', 'jump'])
 const images = [
   { caption: ' Warum sollte Alex wohl gehen 🤔' },
   { caption: 'Def... Junge sag doch nicht sowas.' },
-  { caption: 'AHHHHHH' },
+  { caption: 'AHHHHH Dummer Junge man' },
   { caption: '... und man nichts einander versprochen hat.<br><br><em>It\'s like nothing was promised but everything felt implied.</em><br><br>Ich check sooooo jetzt' },
   { caption: 'Wo willst du hin? Ich geb dir mal zwei Optionen 👇' },
 ]

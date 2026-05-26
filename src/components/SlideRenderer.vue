@@ -25,6 +25,8 @@ import BinaryQuestion from './slides/BinaryQuestion.vue'
 import FunFact from './slides/FunFact.vue'
 import ChatGallery from './slides/ChatGallery.vue'
 import YesChain from './slides/YesChain.vue'
+import ScaredOf from './slides/ScaredOf.vue'
+import RelationshipChain from './slides/RelationshipChain.vue'
 
 const props = defineProps({
   slide: { type: Object, required: true },
@@ -44,6 +46,8 @@ const typeMap = {
   'funfact': FunFact,
   'chat-gallery': ChatGallery,
   'yes-chain': YesChain,
+  'scared-of': ScaredOf,
+  'relationship-chain': RelationshipChain,
 }
 
 const slideComponent = computed(() => typeMap[props.slide.type] ?? null)

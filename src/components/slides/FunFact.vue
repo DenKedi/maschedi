@@ -13,15 +13,15 @@
       <!-- Stats row -->
       <div class="stats-grid">
         <div class="stat-card">
-          <span class="stat-value">03:26</span>
+          <span class="stat-value">03:30</span>
           <span class="stat-label">Minuten Scrollzeit</span>
         </div>
         <div class="stat-card">
-          <span class="stat-value">554</span>
+          <span class="stat-value">555</span>
           <span class="stat-label">Bilder &amp; Videos</span>
         </div>
         <div class="stat-card stat-wide">
-          <span class="stat-value">468 MB</span>
+          <span class="stat-value">469 MB</span>
           <span class="stat-label">Daten</span>
         </div>
       </div>
@@ -32,13 +32,8 @@
       <!-- Body text -->
       <div class="body-text">
         <p>
-          In dem Zeitraum habe ich so ziemlich alles mit dir geteilt, was mir so passiert ist.
-          Was davor war wissen wir leider nicht — du hattest deine Nachrichten auf
-          <span class="highlight">Selbstlöschung</span>...
-        </p>
-        <p class="mt-3">
-          Trotzdem cool — und irgendwie auch die Bestätigung, dass unsere Leben total
-          <span class="highlight">ineinander verfangen</span> sind.
+          Ich glaube mit keinem anderen Menschen habe ich im letzten Jahr so viel geteilt wie mit dir. <span class="highlight">Danke dass du zuhörst, liest, und einfach für mich da bist!</span>
+          Warum hattest du vorher Selbstlöschende Nachrichten an!!!
         </p>
       </div>
 
@@ -133,9 +128,12 @@ const emit = defineEmits(['answer'])
   padding: 1.1rem 1.2rem;
 }
 
-.highlight {
-  color: #f0abfc;
-  font-weight: 700;
+.body-text .highlight {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.35), rgba(168, 85, 247, 0.35));
+  border-radius: 4px;
+  padding: 0.05em 0.2em;
+  color: #fff;
+  font-weight: 600;
 }
 
 .sekt-img {

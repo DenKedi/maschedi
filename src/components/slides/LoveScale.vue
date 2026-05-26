@@ -30,6 +30,7 @@
         v-if="autschKey"
         :key="autschKey"
         class="autsch-text pointer-events-none"
+        :style="{ fontSize: autschSize }"
         @animationend="autschKey = 0"
       >
         AUTSCH
@@ -56,7 +57,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const props = defineProps({
   slide: { type: Object, required: true },
@@ -66,11 +67,19 @@ const emit = defineEmits(['answer'])
 const picked = ref(null)
 const removed = ref(new Set())
 const autschKey = ref(0)
+const autschValue = ref(1)
+
+// n=1 → 6rem (biggest), n=9 → 1.5rem (smallest), linear
+const autschSize = computed(() => {
+  const size = 6 - (autschValue.value - 1) * (4.5 / 8)
+  return `${size.toFixed(2)}rem`
+})
 
 function pick(n) {
   if (n === 10) {
     picked.value = 10
   } else {
+    autschValue.value = n
     removed.value.add(n)
     removed.value = new Set(removed.value)
     autschKey.value++
@@ -114,7 +123,6 @@ function pick(n) {
 /* AUTSCH – flies up, spins, fades */
 .autsch-text {
   position: absolute;
-  font-size: clamp(3rem, 16vw, 5.5rem);
   font-weight: 900;
   background: linear-gradient(135deg, #ef4444, #f97316);
   -webkit-background-clip: text;

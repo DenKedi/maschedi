@@ -21,13 +21,18 @@
       "type": "funfact"
     },
     {
+      "type": "image-title",
+      "title": "Wir tauchen ein in die Vergangenheit",
+      "image": "/images/carl.jpg"
+    },
+    {
       "type": "chat-gallery"
     },
     {
       "type": "image-title",
       "title": "Since this is a Date...",
       "subtitle": "I want to ask you a couple Questions (Couple-Questions)",
-      "image": null,
+      "image": "/images/dogg.jpg",
       "buttonText": "Oki"
     },
     {
@@ -37,12 +42,10 @@
       "options": ["A) Ranzig", "B) Mausig", "C) Atzig", "D) Fotzig"]
     },
     {
-      "type": "yes-chain"
+      "type": "scared-of"
     },
     {
-      "type": "image-title",
-      "title": "Wir tauchen ein in die Vergangenheit",
-      "image": "/images/carl.jpg"
+      "type": "relationship-chain"
     }
   ]
 }
