@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body, #app {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  #app {
+    height: 100dvh;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right)
+             env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #0f0f0f;
+    color: #fff;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 9999px;
+    background: #fff;
+    border: 3px solid #ec4899;
+    box-shadow: 0 4px 14px rgba(236, 72, 153, 0.6);
+    cursor: pointer;
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 9999px;
+    background: #fff;
+    border: 3px solid #ec4899;
+    box-shadow: 0 4px 14px rgba(236, 72, 153, 0.6);
+    cursor: pointer;
+  }
+}

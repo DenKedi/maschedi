@@ -1,0 +1,48 @@
+{
+  "title": "Mascha & Cedi Quiz",
+  "slides": [
+    {
+      "type": "slider",
+      "question": "Wie viele Kätzchen passen in einen Apache Kampfhubschrauber?",
+      "image": "/images/kaetzchen.webp",
+      "min": 1,
+      "max": 100000,
+      "step": 1
+    },
+    {
+      "type": "love-scale",
+      "question": "Wie doll liebst du mich eigentlich genau?"
+    },
+    {
+      "type": "binary",
+      "question": "10010001001011011001110?"
+    },
+    {
+      "type": "funfact"
+    },
+    {
+      "type": "chat-gallery"
+    },
+    {
+      "type": "image-title",
+      "title": "Since this is a Date...",
+      "subtitle": "I want to ask you a couple Questions (Couple-Questions)",
+      "image": null,
+      "buttonText": "Oki"
+    },
+    {
+      "type": "multiple-choice",
+      "question": "Monogamie finde ich...",
+      "image": "/images/sheep.jpg",
+      "options": ["A) Ranzig", "B) Mausig", "C) Atzig", "D) Fotzig"]
+    },
+    {
+      "type": "yes-chain"
+    },
+    {
+      "type": "image-title",
+      "title": "Wir tauchen ein in die Vergangenheit",
+      "image": "/images/carl.jpg"
+    }
+  ]
+}
