@@ -14,7 +14,7 @@
     <transition name="fade">
       <div v-if="expanded" class="fear-card">
         <p class="fear-text">
-          you not actually liking me for my personality but for the feelings I give you.
+          I think I am scared of you not actually liking me for my personality but for the feelings I give you.
         </p>
       </div>
     </transition>
