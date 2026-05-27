@@ -6,163 +6,27 @@
     <div class="bg-blob bg-blob-2"></div>
     <div class="bg-blob bg-blob-3"></div>
 
-    <Transition name="slide-fade" mode="out-in">
-      <!-- START SCREEN -->
-      <div
-        v-if="!started"
-        key="start"
-        class="relative z-10 flex-1 flex flex-col items-center justify-between gap-6 px-5 pt-8 pb-12 text-center min-h-0"
-      >
-        <h1 class="title-glow font-extrabold leading-tight max-w-md">
-          <span class="block text-xl sm:text-2xl text-white/85">
-            Was ist jetzt eigentlich mit
-          </span>
-          <span class="block bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-fuchsia-400 to-purple-400 text-4xl sm:text-5xl mt-1">
-            Mascha &amp; Cedi
-          </span>
-          <span class="block text-white/40 text-base font-medium mt-3 leading-relaxed">The World Deserves to Know ...<br>WE DESERVE TO KNOW</span>
-        </h1>
+    <!-- STATIC HOLDING PAGE -->
+    <div class="relative z-10 flex-1 flex flex-col items-center justify-center gap-8 px-5 text-center">
+      <h1 class="title-glow font-extrabold leading-tight">
+        <span class="block bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-fuchsia-400 to-purple-400 text-5xl sm:text-6xl">
+          Mascha &amp; Cedi
+        </span>
+      </h1>
 
-        <!-- Floating bubble with both -->
-        <div class="flex items-center justify-center gap-2 sm:gap-4 w-full">
-          <div class="bubble">
-            <img src="/images/xx.jpeg" alt="Mascha & Cedi" />
-          </div>
-        </div>
-
-        <div class="flex flex-col items-center gap-5 w-full">
-          <button
-            class="start-btn w-full max-w-xs py-4 rounded-full text-white font-extrabold text-2xl tracking-[0.3em] active:scale-95 transition-transform"
-            @click="start"
-          >
-            START
-          </button>
-
-          <p class="text-white/50 text-sm italic tracking-wide max-w-xs">
-            Sponsored by >Straightforward (Arbeitszeitbetrug)
-          </p>
-        </div>
+      <div class="bubble">
+        <img src="/images/xx.jpeg" alt="Mascha & Cedi" />
       </div>
 
-      <!-- QUIZ / END SCREEN WRAPPER -->
-      <div v-else key="quiz" class="relative z-10 flex-1 flex flex-col overflow-hidden">
-        <!-- Progress bar (hidden on end screen) -->
-        <ProgressBar
-          v-if="!done"
-          :current="currentIndex"
-          :total="slides.length"
-        />
-
-        <Transition name="slide-fade" mode="out-in">
-          <div v-if="!done" :key="currentIndex" class="flex-1 overflow-hidden">
-            <SlideRenderer
-              :slide="currentSlide"
-              @answer="onAnswer"
-              @jump="onJump"
-            />
-          </div>
-
-          <div
-            v-else
-            key="end"
-            class="flex-1 flex flex-col items-center justify-center px-8 text-center gap-6"
-          >
-            <template v-if="!finalOutcome">
-              <h1 class="text-4xl font-extrabold text-white leading-tight">
-                Wie ist das Ergebnis?
-              </h1>
-              <p class="text-white/60 text-xl">
-                Ende Gut alles gut.
-              </p>
-              <div class="flex flex-col sm:flex-row gap-4 w-full max-w-md">
-                <button
-                  class="mt-4 flex-1 px-8 py-4 rounded-2xl bg-emerald-500 text-white font-bold text-xl active:scale-95 transition-transform shadow-lg shadow-emerald-500/30"
-                  @click="chooseOutcome('won')"
-                >
-                  Gewonnen
-                </button>
-                <button
-                  class="mt-4 flex-1 px-8 py-4 rounded-2xl bg-rose-500 text-white font-bold text-xl active:scale-95 transition-transform shadow-lg shadow-rose-500/30"
-                  @click="chooseOutcome('lost')"
-                >
-                  Verloren
-                </button>
-              </div>
-            </template>
-
-            <template v-else>
-              <h1 class="text-4xl font-extrabold text-white leading-tight">
-                {{ finalOutcome === 'won' ? 'Dann stell die Frage.' : 'Sorry to Hear That Bro.' }}
-              </h1>
-              <p v-if="finalOutcome === 'lost'" class="text-white/60 text-xl">
-                You both deserve something different apperantly.
-              </p>
-              <button
-                class="mt-4 px-10 py-5 rounded-2xl bg-pink-500 text-white font-bold text-xl active:scale-95 transition-transform shadow-lg shadow-pink-500/30"
-                @click="restart"
-              >
-                Nochmal spielen ↺
-              </button>
-            </template>
-          </div>
-        </Transition>
-
-        <div
-          v-if="!done"
-          class="absolute top-2 right-3 text-white/30 text-xs tabular-nums select-none z-20"
-        >
-          {{ currentIndex + 1 }} / {{ slides.length }}
-        </div>
-      </div>
-    </Transition>
+      <p class="text-white/60 text-lg font-medium tracking-wide">
+        Current State: Something
+      </p>
+    </div>
 
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import quizData from './data/quiz.json'
-import ProgressBar from './components/ProgressBar.vue'
-import SlideRenderer from './components/SlideRenderer.vue'
-
-const slides = quizData.slides
-const currentIndex = ref(0)
-const answers = ref([])
-const done = ref(false)
-const started = ref(false)
-const finalOutcome = ref(null)
-
-const currentSlide = computed(() => slides[currentIndex.value])
-
-function start() {
-  started.value = true
-}
-
-function onJump(type) {
-  const idx = slides.findIndex(s => s.type === type)
-  if (idx !== -1) currentIndex.value = idx
-}
-
-function onAnswer(value) {
-  answers.value[currentIndex.value] = value
-  if (currentIndex.value + 1 >= slides.length) {
-    done.value = true
-  } else {
-    currentIndex.value++
-  }
-}
-
-function chooseOutcome(value) {
-  finalOutcome.value = value
-}
-
-function restart() {
-  currentIndex.value = 0
-  answers.value = []
-  done.value = false
-  started.value = false
-  finalOutcome.value = null
-}
 </script>
 
 <style scoped>
